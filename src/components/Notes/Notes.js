@@ -4,7 +4,7 @@ import styles from './Notes.module.css';
 export default function Notes() {
 	const [notes, setNotes] = useState('');
 
-	const updateNotes = (notes) => {
+	const updateNotes = notes => {
 		setNotes(notes);
 	}
 
