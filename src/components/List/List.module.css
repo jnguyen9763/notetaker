@@ -26,6 +26,10 @@ input, .listItems {
 	width: 2px;
 }
 
+.listItems::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 input {
 	width: 100%;
 	font-family: 'Lato', sans-serif;
