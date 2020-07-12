@@ -3,7 +3,7 @@ import styles from './List.module.css';
 import ListItem from './ListItem/ListItem';
 import { v4 as uuidv4 } from 'uuid';
 
-export default function List() {
+export default function List({ style, name, placeholder, uncheckedIcon, checkedIcon }) {
 	const [input, setInput] = useState('');
 	const [items, setItems] = useState([]);
 	const [toggleScroll, setToggleScroll] = useState(false);
@@ -55,21 +55,23 @@ export default function List() {
 				input={input}
 				isChecked={isChecked}
 				key={id}
+				uncheckedIcon={uncheckedIcon}
+				checkedIcon={checkedIcon}
 				checkListItem={checkListItem}
 				deleteListItem={deleteListItem}
 			/>);
 	}
 
 	return (
-		<div className={styles.List}>
-			<div className={styles.listTitle}>List name</div>
+		<div className={[styles.List, style].join(' ')}>
+			<div className={styles.listTitle}>{name}</div>
 			<div id='list' className={styles.listItems}>
 				{displayListItems()}
 			</div>
 			<form onSubmit={(e) => updateList(e)}>
 				<input
 					type='text'
-					placeholder='Enter something'
+					placeholder={placeholder}
 					value={input}
 					onChange={(e) => setInput(e.target.value)}
 				/>

@@ -5,13 +5,13 @@ import { faCheckCircle, faCircle } from '@fortawesome/free-regular-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function ListItem({ id, input, isChecked, checkListItem, deleteListItem }) {
+export default function ListItem({ id, input, isChecked, uncheckedIcon, checkedIcon, checkListItem, deleteListItem }) {
 	return (
 		<div className={styles.ListItem}>
 			<button className={styles.checkBox} onClick={() => checkListItem(id)}>
 				{isChecked ?
-					<FontAwesomeIcon icon={faCheckCircle} /> :
-					<FontAwesomeIcon icon={faCircle} />
+					checkedIcon ? checkedIcon : <FontAwesomeIcon icon={faCheckCircle} /> :
+					uncheckedIcon ? uncheckedIcon : <FontAwesomeIcon icon={faCircle} />
 				}
 			</button>
 			<div className={styles.input}>{input}</div>

@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './App.module.css';
-import Calendar from '../Calendar/Calendar'
-import Notes from '../Notes/Notes'
-import List from '../List/List'
+import Calendar from '../Calendar/Calendar';
+import Notes from '../Notes/Notes';
+import Goals from '../Goals/Goals';
+import Todos from '../Todos/Todos';
 
 export default function App() {
   return (
@@ -10,7 +11,8 @@ export default function App() {
       <Calendar />
       <Notes />
       <div className={styles.lists}>
-        <List />
+        <Goals />
+        <Todos />
       </div>
     </div>
   );
