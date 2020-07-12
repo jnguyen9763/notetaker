@@ -32,6 +32,7 @@ button {
 }
 
 .header {
+	display: flex;
 	font-weight: 900;
 	margin-bottom: .5rem;
 }

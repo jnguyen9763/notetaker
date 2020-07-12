@@ -78,7 +78,10 @@ export default function Calendar() {
 	return (
 		<div className={styles.Calendar}>
 			<div className={styles.header}>
-				{monthName()} {year}
+				<div>
+					{monthName()} {year}
+				</div>
+				<button><i className="fas fa-angle-down"></i></button>
 			</div>
 			<div className={styles.month}>
 				<div className={styles.weekdays}>
