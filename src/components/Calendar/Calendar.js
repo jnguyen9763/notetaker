@@ -53,7 +53,7 @@ export default function Calendar() {
 				}
 				let style = [styles.day]
 				if (currDay === today) style.push(styles.today)
-				week.push(<div className={style.join(' ')} key={currDay}>{currDay}</div>);
+				week.push(<button className={style.join(' ')} key={currDay}>{currDay}</button>);
 				currDay++;
 			}
 			weeks.push(<div className={styles.week} key={`week${w}`}>{week}</div>);

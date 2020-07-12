@@ -8,6 +8,12 @@
 	background-color: #FCF3CF;
 }
 
+button {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
 .weekdays, .week {
 	display: flex;
 	flex-direction: column;
@@ -28,6 +34,10 @@
 .header {
 	font-weight: 900;
 	margin-bottom: .5rem;
+}
+
+.header div {
+	margin: 0 1rem;
 }
 
 .month {
