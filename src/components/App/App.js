@@ -9,7 +9,7 @@ export default function App() {
     <div className={styles.App}>
       <Calendar />
       <Notes />
-      <div className={styles.col}>
+      <div className={styles.lists}>
         <List />
       </div>
     </div>

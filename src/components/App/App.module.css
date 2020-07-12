@@ -4,7 +4,9 @@
 	display: flex;
 }
 
-.col {
+.lists {
 	display: flex;
 	flex-direction: column;
+	width: 30%;
+	height: 100%;
 }

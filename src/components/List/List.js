@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './List.module.css';
 
 export default function List() {
 	const [input, setInput] = useState('');
 	const [items, setItems] = useState([]);
+
+	useEffect(() => {
+		// scroll to bottom
+		const scrollWindow = document.querySelector('#list');
+		scrollWindow.scrollTop = scrollWindow.scrollHeight - scrollWindow.clientHeight;
+	}, [items])
 
 	const updateList = e => {
 		e.preventDefault();
@@ -12,12 +18,14 @@ export default function List() {
 	}
 
 	const displayListItems = () => {
-		return items.map(item => <div className={styles.listItem}>{item}</div>)
+		// TODO: add unique key
+		return items.map(item => <div className={styles.listItem}>{item}</div>);
 	}
 
 	return (
 		<div className={styles.List}>
-			<div className={styles.listItems}>
+			<div className={styles.listTitle}>List name</div>
+			<div id='list' className={styles.listItems}>
 				{displayListItems()}
 			</div>
 			<form onSubmit={(e) => updateList(e)}>
