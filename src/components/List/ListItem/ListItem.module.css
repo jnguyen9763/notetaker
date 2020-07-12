@@ -1,0 +1,26 @@
+.ListItem {
+	display: flex;
+	align-items: flex-start;
+	margin: .25rem 0;
+}
+
+.checkBox {
+	color: #F1C40F;
+	font-size: 1rem;
+}
+
+.input {
+	margin: 0 .5rem;
+	line-height: 1rem;
+	flex-grow: 1;
+	display: inline-block;
+	word-break: break-word;
+}
+
+.delete {
+	color: #F9E79F;
+}
+
+.delete:hover {
+	color: #F1C40F;
+}
