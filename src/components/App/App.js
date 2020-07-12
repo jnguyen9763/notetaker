@@ -1,9 +1,13 @@
 import React from 'react';
-import './App.css';
+import styles from './App.module.css';
 import Calendar from '../Calendar/Calendar'
+import Notes from '../Notes/Notes'
 
 export default function App() {
   return (
-    <Calendar />
+    <div className={styles.App}>
+      <Calendar />
+      <Notes />
+    </div>
   );
 }
