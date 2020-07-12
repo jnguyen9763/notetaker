@@ -13,3 +13,20 @@ body,
   height: 100%;
   font-family: 'Lato', sans-serif;
 }
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(169, 169, 169, .25);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(169, 169, 169, .5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(169, 169, 169, .75);
+} 
