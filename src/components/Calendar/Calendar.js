@@ -17,7 +17,7 @@ import { faAngleRight, faAngleDoubleRight, faAngleLeft, faAngleDoubleLeft } from
 		Show todays 
 */
 
-export default function Calendar() {
+export default function Calendar({ setDateKey }) {
 	const [date, setDate] = useState('');
 	const [month, setMonth] = useState('');
 	const [year, setYear] = useState(0);
@@ -43,14 +43,16 @@ export default function Calendar() {
 
 	useEffect(() => {
 		// reset other state variables
+		const thisDate = new Date(year, month, today)
 		const numDays = new Date(year, month + 1, 0).getDate();
 		const firstDate = new Date(year, month, 1).getDay();
-		setDate(new Date(year, month, today));
+		setDate(thisDate);
 		setDays(numDays);
 		setFirstWeekday(firstDate);
 		if (today > numDays) setToday(numDays);
 		// communicate to App
-	}, [year, month, today])
+		setDateKey(thisDate.toString());
+	}, [year, month, today, setDateKey])
 
 	const renderDays = () => {
 		const numWeeks = weekCount();
