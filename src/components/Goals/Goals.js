@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb as unchecked } from '@fortawesome/free-regular-svg-icons'
 import { faLightbulb as checked } from '@fortawesome/free-solid-svg-icons'
 
-export default function Goals() {
+export default function Goals({ dataGoals, setDataGoals }) {
 	return (
 		<List
 			style={styles.Goals}
@@ -13,6 +13,8 @@ export default function Goals() {
 			placeholder='Enter your goals'
 			uncheckedIcon={<FontAwesomeIcon icon={unchecked} />}
 			checkedIcon={<FontAwesomeIcon icon={checked} />}
+			dataListItems={dataGoals}
+			setDataListItems={setDataGoals}
 		/>
 	);
 }

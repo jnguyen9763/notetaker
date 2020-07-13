@@ -3,9 +3,8 @@ import styles from './List.module.css';
 import ListItem from './ListItem/ListItem';
 import { v4 as uuidv4 } from 'uuid';
 
-export default function List({ style, name, placeholder, uncheckedIcon, checkedIcon }) {
+export default function List({ style, name, placeholder, uncheckedIcon, checkedIcon, dataListItems, setDataListItems }) {
 	const [input, setInput] = useState('');
-	const [items, setItems] = useState([]);
 	const [toggleScroll, setToggleScroll] = useState(false);
 
 	useEffect(() => {
@@ -22,34 +21,34 @@ export default function List({ style, name, placeholder, uncheckedIcon, checkedI
 			id: uuidv4(),
 			isChecked: false,
 		}
-		setItems([...items, listItem]);
+		setDataListItems([...dataListItems, listItem]);
 		setToggleScroll(!toggleScroll);
 		setInput('');
 	}
 
 	const checkListItem = id => {
-		const itemsCopy = [...items];
+		const itemsCopy = [...dataListItems];
 		for (let item of itemsCopy) {
 			if (item.id !== id) continue;
 			item.isChecked = !item.isChecked;
-			setItems(itemsCopy);
+			setDataListItems(itemsCopy);
 			break;
 		}
 	}
 
 	const deleteListItem = id => {
-		const itemsCopy = [...items];
+		const itemsCopy = [...dataListItems];
 		for (let i = 0; i < itemsCopy.length; i++) {
 			if (itemsCopy[i].id !== id) continue;
 			itemsCopy.splice(i, 1);
-			setItems(itemsCopy);
+			setDataListItems(itemsCopy);
 			break;
 		}
 
 	}
 
 	const displayListItems = () => {
-		return items.map(({ id, input, isChecked }) =>
+		return dataListItems.map(({ id, input, isChecked }) =>
 			<ListItem
 				id={id}
 				input={input}

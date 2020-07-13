@@ -14,7 +14,6 @@ export default function App() {
   const [dataTodos, setDataTodos] = useState([]);
 
   useEffect(() => {
-    console.log(dataTable);
     if (dataTable.hasOwnProperty(dateKey)) {
       setDataNote(dataTable[dateKey].note);
       setDataGoals(dataTable[dateKey].goals);
