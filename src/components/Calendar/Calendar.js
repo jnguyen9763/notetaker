@@ -42,14 +42,21 @@ export default function Calendar() {
 	}, []);
 
 	useEffect(() => {
+		// reset other state variables
+		const numDays = new Date(year, month + 1, 0).getDate();
+		const firstDate = new Date(year, month, 1).getDay();
 		setDate(new Date(year, month, today));
+		setDays(numDays);
+		setFirstWeekday(firstDate);
+		if (today > numDays) setToday(numDays);
+		// communicate to App
 	}, [year, month, today])
 
 	const renderDays = () => {
 		const numWeeks = weekCount();
 		let weeks = [];
 		let currDay = 1;
-		for (let w = 0; w < numWeeks; w++) {
+		for (let w = 0; w < numWeeks && currDay <= days; w++) {
 			let week = [];
 			for (let d = 0; d < 7 && currDay <= days; d++) {
 				if (currDay === 1 && d !== firstWeekday) {
@@ -88,12 +95,7 @@ export default function Calendar() {
 
 	const changeYear = increment => {
 		const newYear = year + increment;
-		const numDays = new Date(newYear, month + 1, 0).getDate();
-		const firstDate = new Date(newYear, month, 1).getDay();
 		setYear(newYear);
-		setDays(numDays);
-		setFirstWeekday(firstDate);
-		if (today > numDays) setToday(numDays);
 	}
 
 	const changeMonth = increment => {
@@ -107,13 +109,8 @@ export default function Calendar() {
 			newMonth = 0;
 			newYear++;
 		}
-		const numDays = new Date(newYear, newMonth + 1, 0).getDate();
-		const firstDate = new Date(newYear, newMonth, 1).getDay();
 		setMonth(newMonth);
 		setYear(newYear);
-		setDays(numDays);
-		setFirstWeekday(firstDate);
-		if (today > numDays) setToday(numDays);
 	}
 
 	return (
