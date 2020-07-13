@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Calendar.module.css'
+import styles from './Calendar.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleDoubleRight, faAngleLeft, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
 
 /*
 	Display:
@@ -42,6 +44,7 @@ export default function Calendar() {
 
 	const renderDays = () => {
 		const numWeeks = weekCount();
+		console.log(numWeeks, days);
 		let weeks = [];
 		let currDay = 1;
 		for (let w = 0; w < numWeeks; w++) {
@@ -66,8 +69,8 @@ export default function Calendar() {
 		var lastOfMonth = new Date(year, month, 0);
 
 		var used = firstOfMonth.getDay() + lastOfMonth.getDate();
-
-		return Math.ceil(used / 7);
+		// plus 1 just in case month starts late
+		return Math.ceil(used / 7) + 1;
 	}
 
 	const monthName = () => {
@@ -75,13 +78,48 @@ export default function Calendar() {
 		return Intl.DateTimeFormat('en-US', options).format(date)
 	}
 
+	const changeYear = increment => {
+		const newYear = year + increment;
+		const thisDate = new Date(newYear, month, today);
+		const numDays = new Date(newYear, month + 1, 0).getDate();
+		const firstDate = new Date(newYear, month, 1).getDay();
+		setDate(thisDate);
+		setYear(newYear);
+		setDays(numDays);
+		setFirstWeekday(firstDate);
+	}
+
+	const changeMonth = increment => {
+		let newMonth = month + increment;
+		let newYear = year;
+		if (newMonth < 0) {
+			newMonth = 11;
+			newYear--;
+		}
+		if (newMonth > 11) {
+			newMonth = 0;
+			newYear++;
+		}
+		const thisDate = new Date(newYear, newMonth, today);
+		const numDays = new Date(newYear, newMonth + 1, 0).getDate();
+		const firstDate = new Date(newYear, newMonth, 1).getDay();
+		setDate(thisDate);
+		setMonth(newMonth);
+		setYear(newYear);
+		setDays(numDays);
+		setFirstWeekday(firstDate);
+	}
+
 	return (
 		<div className={styles.Calendar}>
 			<div className={styles.header}>
+				<button onClick={() => changeYear(-1)}><FontAwesomeIcon icon={faAngleDoubleLeft} /></button>
+				<button onClick={() => changeMonth(-1)}><FontAwesomeIcon icon={faAngleLeft} /></button>
 				<div>
 					{monthName()} {year}
 				</div>
-				<button><i className='fas fa-angle-down'></i></button>
+				<button onClick={() => changeMonth(1)}><FontAwesomeIcon icon={faAngleRight} /></button>
+				<button onClick={() => changeYear(1)}><FontAwesomeIcon icon={faAngleDoubleRight} /></button>
 			</div>
 			<div className={styles.month}>
 				<div className={styles.weekdays}>
