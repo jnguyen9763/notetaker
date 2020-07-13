@@ -34,13 +34,16 @@ export default function Calendar() {
 		const todayDate = thisDate.getDate();
 		const firstDate = new Date(thisYear, thisMonth, 1).getDay();
 		// set state
-		setDate(thisDate);
 		setMonth(thisMonth);
 		setYear(thisYear);
 		setDays(numDays);
 		setToday(todayDate);
 		setFirstWeekday(firstDate);
 	}, []);
+
+	useEffect(() => {
+		setDate(new Date(year, month, today));
+	}, [year, month, today])
 
 	const renderDays = () => {
 		const numWeeks = weekCount();
@@ -58,7 +61,7 @@ export default function Calendar() {
 				week.push(<button
 					id={currDay}
 					className={style.join(' ')}
-					onClick={(e) => updateToday(e)}
+					onClick={(e) => setToday(parseInt(e.target.id))}
 					key={currDay}>
 					{currDay}
 				</button>);
@@ -83,21 +86,10 @@ export default function Calendar() {
 		return Intl.DateTimeFormat('en-US', options).format(date)
 	}
 
-	const updateToday = (e) => {
-		let newToday = e.target.id;
-		const oldTodayElem = document.getElementById(today);
-		const newTodayElem = document.getElementById(newToday);
-		oldTodayElem.className = styles.day;
-		newTodayElem.className = [styles.day, styles.today].join(' ');
-		setToday(newToday);
-	}
-
 	const changeYear = increment => {
 		const newYear = year + increment;
-		const thisDate = new Date(newYear, month, today);
 		const numDays = new Date(newYear, month + 1, 0).getDate();
 		const firstDate = new Date(newYear, month, 1).getDay();
-		setDate(thisDate);
 		setYear(newYear);
 		setDays(numDays);
 		setFirstWeekday(firstDate);
@@ -115,10 +107,8 @@ export default function Calendar() {
 			newMonth = 0;
 			newYear++;
 		}
-		const thisDate = new Date(newYear, newMonth, today);
 		const numDays = new Date(newYear, newMonth + 1, 0).getDate();
 		const firstDate = new Date(newYear, newMonth, 1).getDay();
-		setDate(thisDate);
 		setMonth(newMonth);
 		setYear(newYear);
 		setDays(numDays);
