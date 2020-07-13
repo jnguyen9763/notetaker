@@ -55,7 +55,13 @@ export default function Calendar() {
 				}
 				let style = [styles.day]
 				if (currDay === today) style.push(styles.today)
-				week.push(<button className={style.join(' ')} key={currDay}>{currDay}</button>);
+				week.push(<button
+					id={currDay}
+					className={style.join(' ')}
+					onClick={(e) => updateToday(e)}
+					key={currDay}>
+					{currDay}
+				</button>);
 				currDay++;
 			}
 			weeks.push(<div className={styles.week} key={`week${w}`}>{week}</div>);
@@ -77,6 +83,15 @@ export default function Calendar() {
 		return Intl.DateTimeFormat('en-US', options).format(date)
 	}
 
+	const updateToday = (e) => {
+		let newToday = e.target.id;
+		const oldTodayElem = document.getElementById(today);
+		const newTodayElem = document.getElementById(newToday);
+		oldTodayElem.className = styles.day;
+		newTodayElem.className = [styles.day, styles.today].join(' ');
+		setToday(newToday);
+	}
+
 	const changeYear = increment => {
 		const newYear = year + increment;
 		const thisDate = new Date(newYear, month, today);
@@ -86,6 +101,7 @@ export default function Calendar() {
 		setYear(newYear);
 		setDays(numDays);
 		setFirstWeekday(firstDate);
+		if (today > numDays) setToday(numDays);
 	}
 
 	const changeMonth = increment => {
@@ -107,6 +123,7 @@ export default function Calendar() {
 		setYear(newYear);
 		setDays(numDays);
 		setFirstWeekday(firstDate);
+		if (today > numDays) setToday(numDays);
 	}
 
 	return (
