@@ -44,7 +44,6 @@ export default function Calendar() {
 
 	const renderDays = () => {
 		const numWeeks = weekCount();
-		console.log(numWeeks, days);
 		let weeks = [];
 		let currDay = 1;
 		for (let w = 0; w < numWeeks; w++) {
