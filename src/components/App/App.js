@@ -14,6 +14,7 @@ export default function App() {
   const [dataTodos, setDataTodos] = useState([]);
 
   useEffect(() => {
+    console.log(dataTable);
     if (dataTable.hasOwnProperty(dateKey)) {
       setDataNote(dataTable[dateKey].note);
       setDataGoals(dataTable[dateKey].goals);
@@ -26,14 +27,16 @@ export default function App() {
   }, [dateKey]);
 
   useEffect(() => {
-    console.log(dateKey, dataNote);
     if (dateKey === '') return;
-    if (!dataTable.hasOwnProperty(dateKey) && dataNote === '' && !dataGoals.length && !dataTodos.length) return;
+    if (dataNote === '' && !dataGoals.length && !dataTodos.length) {
+      // prevent extra objects being stored
+      if (dataTable.hasOwnProperty(dateKey)) delete dataTable[dateKey];
+      return;
+    }
     if (!dataTable.hasOwnProperty(dateKey)) dataTable[dateKey] = {};
     dataTable[dateKey].note = dataNote;
     dataTable[dateKey].goals = dataGoals;
     dataTable[dateKey].todos = dataTodos;
-    console.log(dataTable);
   }, [dateKey, dataNote, dataGoals, dataTodos]);
 
   return (
