@@ -4,8 +4,9 @@ import Calendar from '../Calendar/Calendar';
 import Notes from '../Notes/Notes';
 import Goals from '../Goals/Goals';
 import Todos from '../Todos/Todos';
+import { KEY, getFromLS, saveToLS } from './LocalStorage';
 
-const dataTable = {}
+const dataTable = getFromLS(KEY) || {};
 
 export default function App() {
   const [dateKey, setDateKey] = useState('');
@@ -36,6 +37,7 @@ export default function App() {
     dataTable[dateKey].note = dataNote;
     dataTable[dateKey].goals = dataGoals;
     dataTable[dateKey].todos = dataTodos;
+    saveToLS(KEY, dataTable);
   }, [dateKey, dataNote, dataGoals, dataTodos]);
 
   return (
