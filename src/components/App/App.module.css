@@ -10,3 +10,15 @@
 	width: 30%;
 	height: 100%;
 }
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+	.App {
+		height: 200%;
+		flex-direction: column;
+	}
+
+	.lists {
+		width: 100%;
+	}
+}

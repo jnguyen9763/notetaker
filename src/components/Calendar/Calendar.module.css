@@ -61,3 +61,15 @@ button {
 .today {
 	background-color: #F7DC6F !important;
 }
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+	.Calendar {
+		width: 100%;
+		height: 50%;
+	}
+}
+
+
+
+
