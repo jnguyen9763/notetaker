@@ -63,7 +63,8 @@ button {
 }
 
 .today {
-	border: #F7DC6F 2px solid;
+	outline: #F7DC6F 2px solid;
+	outline-offset: -2px;
 	background-color: #FCF3CF;
 }
 
