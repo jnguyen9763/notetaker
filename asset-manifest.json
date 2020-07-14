@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/notetaker/static/css/main.33b2f08e.chunk.css",
-    "main.js": "/notetaker/static/js/main.8732dd13.chunk.js",
-    "main.js.map": "/notetaker/static/js/main.8732dd13.chunk.js.map",
+    "main.js": "/notetaker/static/js/main.f0fb69a6.chunk.js",
+    "main.js.map": "/notetaker/static/js/main.f0fb69a6.chunk.js.map",
     "runtime-main.js": "/notetaker/static/js/runtime-main.94ec0166.js",
     "runtime-main.js.map": "/notetaker/static/js/runtime-main.94ec0166.js.map",
-    "static/js/2.25a77536.chunk.js": "/notetaker/static/js/2.25a77536.chunk.js",
-    "static/js/2.25a77536.chunk.js.map": "/notetaker/static/js/2.25a77536.chunk.js.map",
+    "static/js/2.a3a0b7c7.chunk.js": "/notetaker/static/js/2.a3a0b7c7.chunk.js",
+    "static/js/2.a3a0b7c7.chunk.js.map": "/notetaker/static/js/2.a3a0b7c7.chunk.js.map",
     "index.html": "/notetaker/index.html",
-    "precache-manifest.972cf3d511e533640ea2bc51e48e8b1f.js": "/notetaker/precache-manifest.972cf3d511e533640ea2bc51e48e8b1f.js",
+    "precache-manifest.a2c7a0b23d69b1dd5d6be4a4d589329d.js": "/notetaker/precache-manifest.a2c7a0b23d69b1dd5d6be4a4d589329d.js",
     "service-worker.js": "/notetaker/service-worker.js",
     "static/css/main.33b2f08e.chunk.css.map": "/notetaker/static/css/main.33b2f08e.chunk.css.map",
-    "static/js/2.25a77536.chunk.js.LICENSE.txt": "/notetaker/static/js/2.25a77536.chunk.js.LICENSE.txt"
+    "static/js/2.a3a0b7c7.chunk.js.LICENSE.txt": "/notetaker/static/js/2.a3a0b7c7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.94ec0166.js",
-    "static/js/2.25a77536.chunk.js",
+    "static/js/2.a3a0b7c7.chunk.js",
     "static/css/main.33b2f08e.chunk.css",
-    "static/js/main.8732dd13.chunk.js"
+    "static/js/main.f0fb69a6.chunk.js"
   ]
 }
