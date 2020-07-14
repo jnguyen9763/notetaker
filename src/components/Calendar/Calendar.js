@@ -51,7 +51,7 @@ export default function Calendar({ setDateKey, containsData }) {
 		setFirstWeekday(firstDate);
 		if (today > numDays) setToday(numDays);
 		// communicate to App
-		setDateKey(thisDate.toString());
+		setDateKey(thisDate.toDateString());
 	}, [year, month, today, setDateKey]);
 
 	const renderDays = () => {
@@ -67,7 +67,7 @@ export default function Calendar({ setDateKey, containsData }) {
 				}
 				let style = [styles.day]
 				if (currDay === today) style.push(styles.today);
-				if (containsData(new Date(year, month, currDay).toString())) style.push(styles.containsData);
+				if (containsData(new Date(year, month, currDay).toDateString())) style.push(styles.containsData);
 				week.push(<button
 					id={currDay}
 					className={style.join(' ')}
