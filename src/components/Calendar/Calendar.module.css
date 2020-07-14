@@ -58,8 +58,13 @@ button {
 	background-color: #FEF9E7;
 }
 
+.containsData {
+	background-color: #F9E79F;
+}
+
 .today {
-	background-color: #F7DC6F !important;
+	border: #F7DC6F 2px solid;
+	background-color: #FCF3CF;
 }
 
 /* Small devices (landscape phones, less than 768px) */

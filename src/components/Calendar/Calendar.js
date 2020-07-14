@@ -17,7 +17,7 @@ import { faAngleRight, faAngleDoubleRight, faAngleLeft, faAngleDoubleLeft } from
 		Show todays 
 */
 
-export default function Calendar({ setDateKey }) {
+export default function Calendar({ setDateKey, containsData }) {
 	const [date, setDate] = useState('');
 	const [month, setMonth] = useState('');
 	const [year, setYear] = useState(0);
@@ -52,7 +52,7 @@ export default function Calendar({ setDateKey }) {
 		if (today > numDays) setToday(numDays);
 		// communicate to App
 		setDateKey(thisDate.toString());
-	}, [year, month, today, setDateKey])
+	}, [year, month, today, setDateKey]);
 
 	const renderDays = () => {
 		const numWeeks = weekCount();
@@ -66,7 +66,8 @@ export default function Calendar({ setDateKey }) {
 					continue;
 				}
 				let style = [styles.day]
-				if (currDay === today) style.push(styles.today)
+				if (currDay === today) style.push(styles.today);
+				if (containsData(new Date(year, month, currDay).toString())) style.push(styles.containsData);
 				week.push(<button
 					id={currDay}
 					className={style.join(' ')}

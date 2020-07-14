@@ -40,9 +40,13 @@ export default function App() {
     saveToLS(KEY, dataTable);
   }, [dateKey, dataNote, dataGoals, dataTodos]);
 
+  const containsData = date => {
+    return dataTable.hasOwnProperty(date);
+  }
+
   return (
     <div className={styles.App}>
-      <Calendar setDateKey={setDateKey} />
+      <Calendar setDateKey={setDateKey} containsData={containsData} />
       <Notes dataNote={dataNote} setDataNote={setDataNote} />
       <div className={styles.lists}>
         <Goals dataGoals={dataGoals} setDataGoals={setDataGoals} />
