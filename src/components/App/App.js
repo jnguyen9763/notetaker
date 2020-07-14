@@ -30,7 +30,10 @@ export default function App() {
     if (dateKey === '') return;
     if (dataNote === '' && !dataGoals.length && !dataTodos.length) {
       // prevent extra objects being stored
-      if (dataTable.hasOwnProperty(dateKey)) delete dataTable[dateKey];
+      if (dataTable.hasOwnProperty(dateKey)) {
+        delete dataTable[dateKey];
+        saveToLS(KEY, dataTable);
+      }
       return;
     }
     if (!dataTable.hasOwnProperty(dateKey)) dataTable[dateKey] = {};
